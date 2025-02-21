@@ -1,4 +1,6 @@
-// Layouy.jsx
+// Layouy.jsx - Proptypes 추가
+
+import PropTypes from "prop-types"
 
 function Layout({ children }) {
   return (
@@ -8,6 +10,10 @@ function Layout({ children }) {
       <footer>푸터 부분</footer>
     </div>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default Layout
