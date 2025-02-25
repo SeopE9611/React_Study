@@ -4,7 +4,8 @@ function UserProfile() {
   const [user, setUser] = useState({ name: "섭이", age: 20 })
 
   const updataNmae = () => {
-    setUser({ name: "행섭" }) // age 값이 사라지는 현상 발생
+    // 이름만 변경하면서 기존 객체의 데이터를 유지하는 함수
+    setUser((prevUser) => ({ ...prevUser, name: "행섭" }))
   }
   return (
     <div>
