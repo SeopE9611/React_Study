@@ -1,6 +1,6 @@
-function formatDate(value) {
-  const date = new Date(value);
-  return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+function formatDate(value) { // 날짜 포맷 함수
+  const date = new Date(value); // value 값으로 Date 객체 생성
+  return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`; // 년, 월, 일 반환
 }
 
 function ReviewCard({review}) {
@@ -10,9 +10,7 @@ function ReviewCard({review}) {
       <h2>{review.title}</h2>
       <p>{review.rating}</p>
       <p>{formatDate(review.createdAt)}</p>
-      <p>{review.content}</p>
-      
-      
+      <p>{review.content}</p>  
     </div>
   )
 }
