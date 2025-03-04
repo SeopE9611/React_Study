@@ -1,4 +1,4 @@
-// import ReviewList from './ReviewList';
+import ReviewList from './ReviewList';
 import mokData from '../mock.json';
 import ReviewForm from './ReviewForm';
 import { useState } from 'react';
@@ -11,7 +11,7 @@ function App() {
       {/* 리뷰 작성폼이 들어갈 자리 */}
       <ReviewForm />
       {/* 리뷰 리스트 컴포넌트가 들어갈 자리 */}
-      {/* <ReviewList reviews={reviews} /> */}
+      <ReviewList reviews={reviews} />
     </div>
   );
 }
