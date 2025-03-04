@@ -17,7 +17,7 @@ function App() {
       {/* 리뷰 작성폼이 들어갈 자리 */}
       <ReviewForm />
       {/* 리뷰 리스트 컴포넌트가 들어갈 자리 */}
-      <ReviewList reviews={reviews} onDelete={handleDeleteReview}/>
+      <ReviewList reviews={reviews} onDelete={handleDeleteReview}/> {/* 리뷰 데이터와 리뷰 삭제 함수를 props로 전달 */}
     </div>
   );
 }
