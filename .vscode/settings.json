@@ -1,5 +1,5 @@
 {
   "typescript.updateImportsOnPaste.enabled": true,
   "javascript.updateImportsOnPaste.enabled": true,
-  "prettier.printWidth": 250
+  "prettier.printWidth": 300
 }
