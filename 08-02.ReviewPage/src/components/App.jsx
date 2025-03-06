@@ -1,10 +1,11 @@
 import ReviewList from './ReviewList';
-import mokData from '../mock.json';
+import mockData from '../mock.json';
 import ReviewForm from './ReviewForm';
 import { useState } from 'react';
 function App() {
-  const [reviews, setReviews] = useState(mokData); // 리뷰 데이터 관리
+  const [reviews, setReviews] = useState(mockData); // 리뷰 데이터 관리
   const [sortOrder, setSortOrder] = useState(null); // 정렬 순서 상태 관리 (null: 정렬하지 않음, latest: 최신순, best: 평점순)
+  const [visibleCount, setVisibleCount] = useState(5); // 보이는 리뷰 개수 상태 관리 (처음에는 5개만 보이도록 설정)
 
   // 리뷰 추가 함수
   const handleAddReview = (newReview) => {
@@ -30,6 +31,12 @@ function App() {
         ) => (review.id === updateReview.id ? updateReview : review) // id가 일치하면 수정된 리뷰로 업데이트, 아니면 기존 리뷰 유지
       )
     );
+  };
+
+  // 리뷰 더보기 클릭 시 실행되는 함수 (추가 리뷰 로드)
+  const loadMoreReviews = () => {
+    console.log('더보기 버튼 클릭 - 현재 표시된 리뷰 수:', visibleCount);
+    setVisibleCount((prev) => prev + 5); // 보이는 리뷰 개수 5개씩 추가
   };
 
   // 정렬된 리뷰 목록 생성
@@ -59,10 +66,16 @@ function App() {
       {/* 리뷰 리스트 */}
       <ReviewList
         // reviews={reviews} // 리뷰 데이터를 props로 전달
-        reviews={sortedReviews} // 정렬된 리뷰 데이터를 props로 전달
+        // reviews={sortedReviews} // 정렬된 리뷰 데이터를 props로 전달
+        reviews={sortedReviews.slice(0, visibleCount)} // 정렬된 리뷰 데이터 중 visibleCount 개수만큼 잘라서 props로 전달 (slice 함수 사용 start:0, end:visibleCount)
         onDelete={handleDeleteReview} // 리뷰 삭제 함수를 props로 전달
         onEdit={handleEditReview} // 리뷰 수정 함수를 props로 전달
       />
+
+      {/* 리뷰 더보기 버튼 */}
+      {visibleCount < reviews.length && ( // 보이는 리뷰 개수가 전체 리뷰 개수보다 작을 때만 렌더링
+        <button onClick={loadMoreReviews}>더보기</button>
+      )}
     </div>
   );
 }

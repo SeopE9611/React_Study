@@ -8,7 +8,7 @@ function formatDate(value) {
 
 function ReviewCard({ review, onDelete, onEdit }) {
   // 리뷰 데이터와 리뷰 삭제 함수, 리뷰 수정 함수를 props로 전달받음
-  const [isEdting, setIsEditing] = useState(false); // 수정 모드 상태 관리
+  const [isEditing, setIsEditing] = useState(false); // 수정 모드 상태 관리
   const [editTitle, setEditTitle] = useState(review.title); // 수정할 리뷰 제목 상태 관리
   const [editContent, setEditContent] = useState(review.content); // 수정할 리뷰 내용 상태 관리
 
@@ -26,7 +26,7 @@ function ReviewCard({ review, onDelete, onEdit }) {
 
   return (
     <div style={{ border: '1px solid #ccc', marginBottom: '1rem', padding: '1rem' }}>
-      {isEdting ? ( // 수정 모드일 때
+      {isEditing ? ( // 수정 모드일 때
         <>
           <input value={editTitle} onChange={(e) => setEditTitle(e.target.value)} /> {/* 리뷰 제목 입력 필드 */}
           <input value={editContent} onChange={(e) => setEditContent(e.target.value)} /> {/* 리뷰 내용 입력 필드 */}
