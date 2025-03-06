@@ -60,22 +60,27 @@ function ReviewForm({ onAddReview }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text" // 입력 타입
-        value={title} // 제목 입력값
-        onChange={(e) => setTitle(e.target.value)} // 제목 입력값 변경 이벤트 핸들러
-        placeholder="제목입력" // 입력창에 표시될 텍스트
-        ref={fileInputRef} // 파일 입력 필드 초기화를 위한 ref 설정
-      />
-      <textarea
-        value={content} // 내용 입력값
-        onChange={(e) => setContent(e.target.value)} // 내용 입력값 변경 이벤트 핸들러
-        placeholder="리뷰내용 입력"
-      />
-      <input type="file" accept="image/*" onChange={handleImageChange} /> /{/* 이미지 업로드 */}
+      <div className="input-group">
+        <input
+          type="text" // 입력 타입
+          value={title} // 제목 입력값
+          onChange={(e) => setTitle(e.target.value)} // 제목 입력값 변경 이벤트 핸들러
+          placeholder="제목입력" // 입력창에 표시될 텍스트
+          ref={fileInputRef} // 파일 입력 필드 초기화를 위한 ref 설정
+        />
+        <textarea
+          value={content} // 내용 입력값
+          onChange={(e) => setContent(e.target.value)} // 내용 입력값 변경 이벤트 핸들러
+          placeholder="리뷰내용 입력"
+        />
+        <input type="file" accept="image/*" onChange={handleImageChange} />
+        {/* 이미지 업로드 */}
+      </div>
       {preview && <img src={preview} alt="미리보기" style={{ width: 100, marginTop: 10 }} />}
       <StarRating rating={rating} setRating={setRating} />
-      <button type="submit">등록</button>
+      <button type="submit" className="register-button">
+        등록
+      </button>
     </form>
   );
 }

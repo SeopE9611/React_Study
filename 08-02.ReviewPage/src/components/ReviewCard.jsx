@@ -25,7 +25,7 @@ function ReviewCard({ review, onDelete, onEdit }) {
   };
 
   return (
-    <div style={{ border: '1px solid #ccc', marginBottom: '1rem', padding: '1rem' }}>
+    <div className="review-card" style={{ border: '1px solid #ccc', marginBottom: '1rem', padding: '1rem' }}>
       {isEditing ? ( // 수정 모드일 때
         <>
           <input value={editTitle} onChange={(e) => setEditTitle(e.target.value)} /> {/* 리뷰 제목 입력 필드 */}
@@ -37,15 +37,19 @@ function ReviewCard({ review, onDelete, onEdit }) {
         // 수정 모드가 아닐 때
         <>
           <img src={review.imgUrl} alt="" style={{ width: 200, height: 300, objectFit: 'cover', marginRight: 20 }} />
-          <h2>{review.title}</h2>
-          <p>{review.rating}</p>
-          {/* formatDate 함수를 사용하여 날짜와 시간을 특정 형식으로 포맷 */}
-          <p>{formatDate(review.createdAt)}</p>
-          {/* toLocaleString()을 사용하여 브라우저 로케일에 맞게 날짜와 시간을 포맷 */}
-          {/* <p>작성일: {new Date(review.createdAt).toLocaleString()}</p> */}
-          <p>{review.content}</p>
-          <button onClick={() => setIsEditing(true)}>수정</button> {/* 수정 버튼 클릭 시 수정 모드 활성화 */}
-          <button onClick={() => onDelete(review.id)}>삭제</button> {/* 리뷰 삭제 함수 호출 */}
+          <div className="review-content">
+            <h2>{review.title}</h2>
+            <p>{review.rating}</p>
+            {/* formatDate 함수를 사용하여 날짜와 시간을 특정 형식으로 포맷 */}
+            <p>{formatDate(review.createdAt)}</p>
+            {/* toLocaleString()을 사용하여 브라우저 로케일에 맞게 날짜와 시간을 포맷 */}
+            {/* <p>작성일: {new Date(review.createdAt).toLocaleString()}</p> */}
+            <p>{review.content}</p>
+            <div className="review-buttons">
+              <button onClick={() => setIsEditing(true)}>수정</button> {/* 수정 버튼 클릭 시 수정 모드 활성화 */}
+              <button onClick={() => onDelete(review.id)}>삭제</button> {/* 리뷰 삭제 함수 호출 */}
+            </div>
+          </div>
         </>
       )}
     </div>

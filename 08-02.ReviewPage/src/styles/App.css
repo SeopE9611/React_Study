@@ -1,0 +1,152 @@
+/* 전체 컨테이너 스타일 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 리뷰 카드 스타일 */
+.review-card {
+  display: flex;
+  align-items: flex-start; /* 텍스트 정렬을 위로 맞춤 */
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
+
+.review-card img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.review-content {
+  flex: 1;
+}
+
+.review-card h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.review-card p {
+  font-size: 14px;
+  margin-bottom: 6px;
+  line-height: 1.5;
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.review-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* 입력 필드 스타일 */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.star-rating {
+  text-align: center;
+}
+
+input,
+textarea {
+  width: 50%;
+  padding: 10px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+input[type='file'] {
+  padding: 5px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+}
+
+/* 버튼 스타일 */
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.register-button {
+  background-color: #007bff;
+  color: white;
+  width: 50%;
+  padding: 12px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 15px auto;
+  display: block; /* 버튼을 블록 요소로 변경하여 margin auto로 중앙 정렬 */
+}
+
+.register-button:hover {
+  background-color: #0056b3;
+}
+
+/* 정렬 버튼 스타일 */
+.sort-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.sort-buttons button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.sort-buttons button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.sort-buttons button:hover {
+  background-color: #ddd;
+}
+
+/* 더보기 버튼 스타일 */
+.load-more {
+  background-color: #007bff;
+  color: white;
+  width: 100%;
+  display: block;
+  margin: 15px auto;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.load-more:hover {
+  background-color: #0056b3;
+}

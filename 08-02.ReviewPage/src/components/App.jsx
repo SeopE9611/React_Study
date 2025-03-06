@@ -2,6 +2,7 @@ import ReviewList from './ReviewList';
 import mockData from '../mock.json';
 import ReviewForm from './ReviewForm';
 import { useState } from 'react';
+import '../styles/App.css';
 function App() {
   const [reviews, setReviews] = useState(mockData); // 리뷰 데이터 관리
   const [sortOrder, setSortOrder] = useState(null); // 정렬 순서 상태 관리 (null: 정렬하지 않음, latest: 최신순, best: 평점순)
@@ -54,12 +55,12 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>영화 리뷰</h1>
       {/* 리뷰 작성폼 */}
       <ReviewForm onAddReview={handleAddReview} />
       {/* 리뷰 정렬 */}
-      <div>
+      <div className="sort-buttons">
         <button onClick={() => handleSortChange('latest')}>최신순</button>
         <button onClick={() => handleSortChange('best')}>베스트순</button>
       </div>
@@ -74,7 +75,9 @@ function App() {
 
       {/* 리뷰 더보기 버튼 */}
       {visibleCount < reviews.length && ( // 보이는 리뷰 개수가 전체 리뷰 개수보다 작을 때만 렌더링
-        <button onClick={loadMoreReviews}>더보기</button>
+        <button className="load-more" onClick={loadMoreReviews}>
+          더보기
+        </button>
       )}
     </div>
   );
