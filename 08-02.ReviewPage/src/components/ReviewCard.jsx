@@ -24,6 +24,22 @@ function ReviewCard({ review, onDelete, onEdit }) {
     setIsEditing(false); // 수정 모드 종료
   };
 
+  function renderStars(rating) {
+    // 별점 렌더링 함수, rating 값에 따라 별 모양을 출력
+    const maxStars = 5; // 최대 별점 개수
+    return (
+      <>
+        {/* map 함수를 사용하여 maxStars만큼 반복 */}
+        {[...Array(maxStars)].map((_, index) => (
+          // 배열의 요소값은 사용하지 않으므로 _로 대체하고 배열의 인덱스 값 사용
+          <span key={index} style={{ color: index < rating ? 'gold' : 'gray', fontSize: 18 }}>
+            {/* 별의 색상을 rating 값에 따라 gold 또는 gray로 설정 */} ★
+          </span>
+        ))}
+      </>
+    );
+  }
+
   return (
     <div className="review-card" style={{ border: '1px solid #ccc', marginBottom: '1rem', padding: '1rem' }}>
       {isEditing ? ( // 수정 모드일 때
@@ -39,9 +55,8 @@ function ReviewCard({ review, onDelete, onEdit }) {
           <img src={review.imgUrl} alt="" style={{ width: 200, height: 300, objectFit: 'cover', marginRight: 20 }} />
           <div className="review-content">
             <h2>{review.title}</h2>
-            <p>{review.rating}</p>
-            {/* formatDate 함수를 사용하여 날짜와 시간을 특정 형식으로 포맷 */}
-            <p>{formatDate(review.createdAt)}</p>
+            <p>{renderStars(review.rating)}</p> {/*renderStars 함수를 사용하여 별점 출력 */}
+            <p>{formatDate(review.createdAt)}</p> {/* formatDate 함수를 사용하여 날짜와 시간을 특정 형식으로 포맷 */}
             {/* toLocaleString()을 사용하여 브라우저 로케일에 맞게 날짜와 시간을 포맷 */}
             {/* <p>작성일: {new Date(review.createdAt).toLocaleString()}</p> */}
             <p>{review.content}</p>
