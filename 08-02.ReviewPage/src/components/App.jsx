@@ -6,6 +6,11 @@ function App() {
   const [reviews, setReviews] = useState(mokData); // 리뷰 데이터 관리
   const [sortOrder, setSortOrder] = useState(null); // 정렬 순서 상태 관리 (null: 정렬하지 않음, latest: 최신순, best: 평점순)
 
+  // 리뷰 추가 함수
+  const handleAddReview = (newReview) => {
+    setReviews([newReview, ...reviews]); // 새 리뷰를 배열 맨 앞에 추가하여 리뷰 데이터 업데이트
+  };
+
   // 리뷰 삭제 함수
   const handleDeleteReview = (id) => {
     // 삭제할 리뷰의 id를 전달받음
@@ -45,7 +50,7 @@ function App() {
     <div>
       <h1>영화 리뷰</h1>
       {/* 리뷰 작성폼 */}
-      <ReviewForm />
+      <ReviewForm onAddReview={handleAddReview} />
       {/* 리뷰 정렬 */}
       <div>
         <button onClick={() => handleSortChange('latest')}>최신순</button>
